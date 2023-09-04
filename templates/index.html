@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask SSE Example</title>
+</head>
+<body>
+    <div id="events"></div>
+
+    <script>
+        const eventsDiv = document.getElementById('events');
+        const eventSource = new EventSource('/events');
+        
+        eventSource.onmessage = function(event) {
+            const p = document.createElement('p');
+            p.textContent = event.data;
+            eventsDiv.appendChild(p);
+        };
+    </script>
+</body>
+</html>
